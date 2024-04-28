@@ -13,8 +13,8 @@ class Controller {
   }
 
   async getById(req, res) {
-    const id = parseInt(req.params.id);
     try {
+      const id = parseInt(req.params.id);
       const item = await this.services.findById(id);
       if (!item) {
         return res.status(404).json({ message: `id ${id} not found` });
@@ -26,8 +26,8 @@ class Controller {
   }
 
   async create(req, res) {
-    const item = req.body;
     try {
+      const item = req.body;
       const createdItem = await this.services.create(item);
       return res.status(201).json(createdItem);
     } catch (error) {
@@ -36,9 +36,9 @@ class Controller {
   }
   
   async update(req, res) {
-    const id = parseInt(req.params.id);
-    const item = req.body;
     try {
+      const id = parseInt(req.params.id);
+      const item = req.body;
       const hasUpdated = await this.services.update(id, item);
       if (!hasUpdated) {
         return res.status(404).json({ message: `id ${id} not found` });
@@ -51,9 +51,9 @@ class Controller {
   }
 
   async replace(req, res) {
-    const id = parseInt(req.params.id);
-    const item = req.body;
     try {
+      const id = parseInt(req.params.id);
+      const item = req.body;
       const upsertedItem = await this.services.upsert(id, item);
       return res.status(200).json(upsertedItem);
     } catch (error) {
@@ -62,8 +62,8 @@ class Controller {
   }
 
   async delete(req, res) {
-    const id = parseInt(req.params.id);
     try {
+      const id = parseInt(req.params.id);
       const hasDeleted = await this.services.delete(id);
       if (!hasDeleted) {
         return res.status(404).json({ message: `id ${id} not found` });
