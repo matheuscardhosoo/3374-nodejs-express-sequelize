@@ -12,7 +12,7 @@ class PessoaController extends Controller{
       const matriculas = await this.services.findMatriculas(estudanteId);
       return res.status(200).json(matriculas);
     } catch (error) {
-      console.error(error);
+      return res.status(500).json({error: error.message});
     }
   }
 }

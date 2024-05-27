@@ -8,7 +8,7 @@ class Controller {
       const allItems = await this.services.findAll();
       return res.status(200).json(allItems);
     } catch (error) {
-      console.error(error);
+      return res.status(500).json({error: error.message});
     }
   }
 
@@ -21,7 +21,7 @@ class Controller {
       }
       return res.status(200).json(item);
     } catch (error) {
-      console.error(error);
+      return res.status(500).json({error: error.message});
     }
   }
 
@@ -31,7 +31,7 @@ class Controller {
       const createdItem = await this.services.create(item);
       return res.status(201).json(createdItem);
     } catch (error) {
-      console.error(error);
+      return res.status(500).json({error: error.message});
     }
   }
   
@@ -46,7 +46,7 @@ class Controller {
       const updatedItem = await this.services.findById(id);
       return res.status(200).json(updatedItem);
     } catch (error) {
-      console.error(error);
+      return res.status(500).json({error: error.message});
     }
   }
 
@@ -57,7 +57,7 @@ class Controller {
       const upsertedItem = await this.services.upsert(id, item);
       return res.status(200).json(upsertedItem);
     } catch (error) {
-      console.error(error);
+      return res.status(500).json({error: error.message});
     }
   }
 
@@ -70,7 +70,7 @@ class Controller {
       }
       return res.status(200).json({ message: `id ${id} deleted` });
     } catch (error) {
-      console.error(error);
+      return res.status(500).json({error: error.message});
     }
   }
 }
